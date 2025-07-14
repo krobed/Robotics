@@ -63,7 +63,7 @@ def rrt_exps(init_pos=None, tar_pos=None, traverse_distance=2, iterations=2000, 
     rrt_planner.plot_rrt()
 
 
-def pure_pursuit_exps():
+def pure_pursuit_exps(init_pose=[20,30], kx=1.0,lad=5.0,theta=0,omega_lim=[-1,1]):
 
     input_map = np.zeros((64, 64))
 
@@ -83,29 +83,43 @@ def pure_pursuit_exps():
     # Plan scaling
     plan = plan * 30 + 32
 
-    diff_robot = DifferentialRobot(local_planner=PurePursuitPlanner())
+    diff_robot = DifferentialRobot(local_planner=PurePursuitPlanner(kx=kx,look_ahead_dist=lad), min_angular_vel=omega_lim[0],max_angular_vel=omega_lim[1])
     diff_robot.set_map(input_map)
 
     # TODO: modify the following line to change initial pose
-    diff_robot.set_pose([20, 30])
+    diff_robot.set_pose(init_pose, orientation=theta)
 
     diff_robot._local_planner.set_plan(plan)
 
     diff_robot.visualize()
 
 
-def integration_exps():
+def integration_exps(lad = 1,obstacles=0):
 
     input_map = np.zeros((64, 64))
-    add_map_obstacles_1(input_map)
+    if obstacles==1:
+        add_map_obstacles_1(input_map)
+        init_pos = [32, 32]
+        target_pos = [55, 32]
+        iter = 2000
+    elif obstacles==2:
+        add_map_obstacles_2(input_map)
+        init_pos = [2,60]
+        target_pos = [60,12]
+        iter = 4000
+    elif obstacles==3:
+        add_map_obstacles_3(input_map)
+        init_pos = [2,60]
+        target_pos = [2,2]
+        iter = 20000
 
-    diff_robot = DifferentialRobot(local_planner=PurePursuitPlanner())
-    rrt_planner = RRTPlanner(input_map)
+    diff_robot = DifferentialRobot(local_planner=PurePursuitPlanner(kx=1, look_ahead_dist=lad) )
+    rrt_planner = RRTPlanner(input_map, nb_iterations=iter,traverse_distance=2)
     diff_robot.set_map(input_map)
 
-    diff_robot.set_pose([32, 32])
-    rrt_planner.set_init_position([32, 32])
-    rrt_planner.set_target_position([55, 32])
+    diff_robot.set_pose(init_pos)
+    rrt_planner.set_init_position(init_pos)
+    rrt_planner.set_target_position(target_pos)
 
     plan = rrt_planner.generate_rrt()
 
@@ -153,18 +167,48 @@ if __name__ == '__main__':
     #     rrt_exps(iterations=iter, traverse_distance=t,width=width,height=height)
     
     # Exp5
-    iter = [500,1000,2000,4000]
+    iter = [2000,4000]
     for i in iter:
         rrt_exps(tar_pos= (55,32), iterations=i, obstacles=1)
     
-    # Exp6
-    for i in iter:
-        rrt_exps(init_pos=(2,60), tar_pos= (60,12), iterations=i, obstacles=2)
+    # # Exp6
+    # for i in iter:
+    #     rrt_exps(init_pos=(2,60), tar_pos= (60,12), iterations=i, obstacles=2)
     
-    # Exp7
-    iter = [5000,10000,20000]
-    for i in iter:
-        rrt_exps(init_pos=(2,60), tar_pos= (2,2), iterations=i, obstacles=3)
-    
-    #pure_pursuit_exps()
-    # integration_exps()
+    # # Exp7
+    # iter = [5000,10000,20000]
+    # for i in iter:
+    #     rrt_exps(init_pos=(2,60), tar_pos= (2,2), iterations=i, obstacles=3)
+
+    """ Local Planning """
+    # # Exp1
+    # pure_pursuit_exps(kx=1.0,lad=5.0, init_pose=[30,10], theta=0.0)
+    # pure_pursuit_exps(kx=1.0,lad=5.0, init_pose=[20,30], theta=0.0)
+    # # Exp2
+    # pure_pursuit_exps(kx=1.0,lad=1.0, init_pose=[30,10], theta=0.0)
+    # pure_pursuit_exps(kx=1.0,lad=1.0, init_pose=[20,30], theta=0.0)
+    # pure_pursuit_exps(kx=1.0,lad=10.0, init_pose=[30,10], theta=0.0)
+    # pure_pursuit_exps(kx=1.0,lad=10.0, init_pose=[20,30], theta=0.0)
+    # # Exp3
+    # omega_lim=[-0.1,0.1]
+    # lad = [1.0,5.0,10.0]
+    # pose = [[20,30],[30,10]]
+    # for l in lad:
+    #     for p in pose:
+    #         pure_pursuit_exps(kx=1.0,lad=l, init_pose=p, theta=0.0, omega_lim=omega_lim)
+
+    """ Integration """
+    # # Exp1
+    # integration_exps(lad=5, obstacles=1)
+    # Exp2
+    # integration_exps(lad=5, obstacles=2)
+    # integration_exps(lad=5, obstacles=3)
+    # Exp3
+    # lad = [10]
+    # obstacles= [2,3]
+    # for l in lad:
+    #     for o in obstacles:
+    #         integration_exps(lad=l, obstacles=o)
+
+
+

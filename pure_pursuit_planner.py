@@ -37,16 +37,18 @@ class DifferentialRobot:
         # also set the pose for the local planner, so it knows where the robot is
 
         # TODO: your code here
-
-        pass
+        self._position = position
+        self._orientation = orientation
+        self._local_planner.set_pose(position,orientation)
 
 
 
     def set_map(self, input_map):
         # TODO: assign the input map to the corresponding class member and update
         # the self._map_height, self._map_width class members accordingly
+        self._map=input_map
+        self._map_height, self._map_width = np.shape(input_map)
 
-        pass
 
 
     def step(self, action, dt=0.1):
@@ -55,12 +57,12 @@ class DifferentialRobot:
         # and "self._orientation"
         # Then create an updated version of the position and orientation of the robot by using the
         # following approximation:
-
-        # x(t+1) = x(t) + v_x * cos(theta(t)) * dt
-        # y(t+1) = y(t) + v_x * sin(theta(t)) * dt
-        # theta(t+1) = theta(t) + v_theta * dt
-
-        # where action = (v_x, v_theta)
+        v_x,v_theta = action
+        x,y = self._position
+        theta = self._orientation
+        x = x + v_x * np.cos(theta) * dt
+        y = y + v_x * np.sin(theta) * dt
+        theta = theta + v_theta * dt
 
         # Then, check if this predicted pose is in collision with the environment.
         # If the collision exists, return, otherwise, set the predicted pose as the new robot pose
@@ -70,7 +72,8 @@ class DifferentialRobot:
         position = [???, ???]
         orientation = ???
         """
-
+        position = [x,y]
+        orientation = theta
         if self.check_for_collision(position):
             return
         else:
@@ -196,10 +199,12 @@ class PurePursuitPlanner:
         # the robots' local frame
         # Note that both the robot's pose and the waypoint position are in global coordinates (map
         # coordinates)
-
-        """x_pos = ???
-        y_pos = ???"""
-
+        x,y= self._current_position
+        theta = self._current_orientation
+        dx = waypoint[0] -x
+        dy = waypoint[1] -y
+        x_pos = dx * np.cos(-theta) - dy * np.sin(-theta)
+        y_pos = dx * np.sin(-theta) + dy * np.cos(-theta)
         return [x_pos, y_pos]
 
 
@@ -227,18 +232,19 @@ class PurePursuitPlanner:
 
         # Hint
 
-        """for ??? :
-
-            ????
+        for wp in self._plan[self._plan_idx:]:
+            x,y = self._current_position
+            dist_to_wp = np.linalg.norm([wp[0]-x,wp[1]-y])
             if dist_to_wp <= self._look_ahead_dist:
-                ???
+                if len(self._plan)-1 > self._plan_idx:
+                    self._plan_idx+=1
                 break
 
         plan_position = self._plan[self._plan_idx]
-        ???
-        if ??? and ???:
+        
+        dist = np.linalg.norm([plan_position[0]-x,plan_position[1]-y])
+        if self._plan_idx==len(self._plan)-1 and dist<self._dist_thresh:
             self._success = True
-        """
 
         return self._plan[self._plan_idx]
 
@@ -249,20 +255,21 @@ class PurePursuitPlanner:
         # - get a new waypoint using the get_waypoint method
         # - get the way point in local coordinates w.r.t the robot
 
-        """waypoint = ???
-        local_position = ???
+        waypoint = self.get_waypoint()
+        local_position = self.get_local_pose(waypoint)
 
         x_position = local_position[0]
-        y_position = local_position[1]"""
+        y_position = local_position[1]
 
         # TODO: compute the linear vel using kx, the local position and the linear vel limits
+        linear_vel = self._kx * x_position
+        linear_vel = np.clip(linear_vel, self._min_linear_vel, self._max_linear_vel)
 
-        """linear_vel = ???"""
-
-        # TODO: compute the angular vel using the look_ahead_distance, 
+        # TODO: compute the angular vel using the look_ahead_distance,
         # the local position and the angular vel limits
-
-        """angular_vel = ???"""
+        curvature = (2 * y_position) / (self._look_ahead_dist ** 2)
+        angular_vel = curvature*linear_vel
+        angular_vel = np.clip(angular_vel,self._min_angular_vel,self._max_angular_vel)
 
         # NOTE: you need the vel limits to clip the result of directly computing the control commands
         # using the pure pursuit equations. Do not use the limits as normalization factors,

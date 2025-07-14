@@ -11,6 +11,7 @@ class Node:
         # For the first node in the tree, the parent list is an empty list
         self.position = (x,y)
         self.parent = []
+        self.cost = 0
 
 
 class RRTPlanner:
@@ -89,6 +90,13 @@ class RRTPlanner:
 
         return (sampled_x, sampled_y)
 
+    def get_near_nodes(self, new_node, radius):
+        near_nodes = []
+        for idx, node in enumerate(self._tree):
+            dist = np.linalg.norm(np.array(node.position) - np.array(new_node.position))
+            if dist <= radius:
+                near_nodes.append((idx, node))
+        return near_nodes
 
     def get_nearest_neighbour(self, position):
 
@@ -178,6 +186,19 @@ class RRTPlanner:
 
         return False
 
+    def check_path_for_collision(self, start, end):
+        # Bresenham-like line discretization or dense linear interpolation
+        num_points = int(np.linalg.norm(np.array(end) - np.array(start)) / 1.0)
+        if num_points == 0:
+            return self.check_for_collision(end)
+
+        x_vals = np.linspace(start[0], end[0], num=num_points)
+        y_vals = np.linspace(start[1], end[1], num=num_points)
+
+        for x, y in zip(x_vals, y_vals):
+            if self.check_for_collision((x, y)):
+                return True
+        return False
 
 
     def generate_rrt(self):
@@ -203,23 +224,44 @@ class RRTPlanner:
 
             random_position = self.sample_random_position()
             nearest_idx, nearest_neighbour = self.get_nearest_neighbour(random_position)
-            nearest_position = self._tree[nearest_idx].position
-            new_position = self.get_new_position(random_position,nearest_position)
+            nearest_position = nearest_neighbour.position
+            new_position = self.get_new_position(random_position, nearest_position)
 
-            if self.check_for_collision(new_position):
+            if self.check_path_for_collision(new_position, nearest_position):
                 continue
             x,y = new_position
             new_position_node = Node(x,y)
-            new_position_node.parent = [nearest_idx,nearest_neighbour]
+            new_position_node.parent = [nearest_idx, nearest_neighbour]
+            new_position_node.cost = nearest_neighbour.cost + np.linalg.norm(np.array(new_position_node.position) - np.array(nearest_position))
+            # self._tree.append(new_position_node)
+            radious = 15
+            near_nodes = self.get_near_nodes(new_position_node, radious)
+            for idx, near_node in near_nodes:
+                potential_cost = near_node.cost + np.linalg.norm(np.array(new_position_node.position) - np.array(near_node.position))
+                if potential_cost < new_position_node.cost and not self.check_path_for_collision(new_position,near_node.position):
+                    new_position_node.cost = potential_cost
+                    new_position_node.parent = [idx, near_node]
             self._tree.append(new_position_node)
+
+            # Rewire near nodes to the new node if it lowers their cost
+            new_idx = len(self._tree) - 1
+            for idx, near_node in near_nodes:
+                potential_cost = new_position_node.cost + np.linalg.norm(np.array(new_position_node.position) - np.array(near_node.position))
+                if potential_cost < near_node.cost and not self.check_path_for_collision(new_position,near_node.position):
+                    self._tree[idx].parent = [new_idx, new_position_node]
+                    self._tree[idx].cost = potential_cost
 
             if self._target_position is not None:
                 x_tar, y_tar = self._target_position
                 x_new, y_new = new_position
                 dist = np.linalg.norm([y_tar - y_new, x_tar -x_new])
-                if dist < self._traverse_distance:
-                   self._plan = self.recover_plan()
-                   break
+                if dist <= self._traverse_distance:
+                    goal_node = Node(*self._target_position)
+                    goal_node.parent = [new_idx, new_position_node]
+                    goal_node.cost = new_position_node.cost + dist
+                    self._tree.append(goal_node)
+                    self._plan = self.recover_plan()
+                    break
         
         return self._plan
 
