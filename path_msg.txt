@@ -1,0 +1,18 @@
+ros2 topic pub /plan nav_msgs/msg/Path "header:
+  frame_id: 'map'
+poses:
+- header:
+    frame_id: 'map'
+  pose:
+    position:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+- header:
+    frame_id: 'map'
+  pose:
+    position:
+      x: -1.0
+      y: 4.0
+      z: 0.0"
+   
