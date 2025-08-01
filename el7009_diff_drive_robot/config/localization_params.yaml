@@ -1,0 +1,11 @@
+amcl:
+  ros__parameters:
+    use_sim_time: true
+    min_particles: 500
+    max_particles: 2000
+    laser_min_range: 0.05
+    laser_max_range: 5.0
+    odom_frame_id: "odom"
+    base_frame_id: "base_link"
+    scan_topic: "scan"
+    set_initial_pose: true
