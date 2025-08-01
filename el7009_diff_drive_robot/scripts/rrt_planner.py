@@ -191,8 +191,8 @@ class RRTPlanner:
         # Hint: See how collisions are handled in pure_pursuit.py
         mx, my = self.world_to_map(*new_position)
       
-        for i in [-5, 0, 5]:
-            for j in [-5, 0, 5]:       
+        for i in [-2, 0, 2]:
+            for j in [-2, 0, 2]:       
                 if self._map[np.clip(int(my) + j, 0, self._map_height - 1), np.clip(int(mx) + i, 0, self._map_width - 1)] >= 1:
                     return True
         return False

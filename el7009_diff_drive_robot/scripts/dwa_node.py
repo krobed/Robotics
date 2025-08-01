@@ -41,7 +41,7 @@ class DWANode(Node):
         self.max_accel = 1.5
         self.max_dyawrate = np.radians(150.0)
         self.last_odom_time = None
-        self.predict_time = 3.0
+        self.predict_time = 2.0
         self.dt = 0.1
         self.last_state_time = 0
         self.min_goal_distance = 0.5
@@ -82,6 +82,8 @@ class DWANode(Node):
         # self.get_logger().info(f'Sensors: {self.scan}')
         self.angle_min = msg.angle_min
         self.angle_increment = msg.angle_increment
+        self.range_min = msg.range_min
+        self.range_max = msg.range_max
 
     def plan_callback(self, msg):
         
@@ -127,8 +129,8 @@ class DWANode(Node):
             a = self.angle_min + i*self.angle_increment
             ox = self.state[0] + r * np.cos(self.state[2] + a)
             oy = self.state[1] + r * np.sin(self.state[2] + a)
-            obstacles.append((ox, oy))
-            if np.sqrt((ox - self.state[0])**2 + (oy - self.state[1])**2) < 0.32:
+            obstacles.append((round(ox), round(oy)))
+            if r - self.range_min <=  0.001 and :
                 self.get_logger().info(f'Crash at {self.state[:2]}')
                 pose = PoseStamped()
                 pose.header.frame_id = 'map'
@@ -171,18 +173,18 @@ class DWANode(Node):
         best_cost= -float('inf')
         best_u = [0.0, 0.0]
         best_traj = []
-        for v in np.linspace(dw[0], dw[1], 10): # Linear velocity
-            for w in np.linspace(dw[2], dw[3], 10): # Angular velocity 
+        for v in np.linspace(dw[0], dw[1], 5): # Linear velocity
+            for w in np.linspace(dw[2], dw[3], 5): # Angular velocity 
                 traj = self.predict_trajectory(state,goal, v, w) # Predictions
                 score = self.evaluate_trajectory(traj, goal, obstacles) # Calculate score
-                cost = [0.4*score[0],2.8*score[1],1.5*score[2]] # Score Function
+                cost = [0.1*score[0],1.2*score[1],0.6*score[2]] # Score Function
                 if sum(cost) > best_cost: # Save best configuration
                     best_score = cost
                     best_cost = sum(cost)
                     best_u = [v, w]
                 best_traj.append(traj)
         self.publish_path(best_traj)
-        self.get_logger().info(f'{best_score}')
+        # self.get_logger().info(f'{best_score}')
         return best_u
 
     def calc_dynamic_window(self, state):
@@ -216,14 +218,14 @@ class DWANode(Node):
         dy = goal[1] - traj[-1][1]
         angle_to_goal = np.arctan2(dy, dx)
         heading_score = np.pi - abs(normalize_angle(angle_to_goal -  traj[-1][2]))
-        min_dist = 5
+        min_dist = self.range_max
         for ox, oy in obstacles:
             for pose in traj:
                 x = pose[0]
                 y = pose[1]
                 d = (x - ox)**2 + (y - oy)**2
                 # self.get_logger().info(f'{d}')
-                if d < 0.3**2:
+                if d**0.5 -  self.range_min<= 0.05:
                     return [-float('inf')]*3 # If collision, return worst score
                 min_dist = min(min_dist,d)
 
