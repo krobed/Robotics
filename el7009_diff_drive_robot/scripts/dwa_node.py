@@ -41,7 +41,7 @@ class DWANode(Node):
         self.max_accel = 1.5
         self.max_dyawrate = np.radians(150.0)
         self.last_odom_time = None
-        self.predict_time = 2.0
+        self.predict_time = 3.0
         self.dt = 0.1
         self.last_state_time = 0
         self.min_goal_distance = 0.5
@@ -126,7 +126,7 @@ class DWANode(Node):
     def scan_to_obstacles(self, scan):
         obstacles = []
         for i, r in enumerate(scan):
-            if r <= 4:
+            if not np.isinf(r):
                 a = self.angle_min + i*self.angle_increment
                 ox = self.state[0] + r * np.cos(self.state[2] + a)
                 oy = self.state[1] + r * np.sin(self.state[2] + a)
@@ -178,7 +178,7 @@ class DWANode(Node):
             for w in np.linspace(dw[2], dw[3], 5): # Angular velocity 
                 traj = self.predict_trajectory(state,goal, v, w) # Predictions
                 score = self.evaluate_trajectory(traj, goal, obstacles) # Calculate score
-                cost = [0.1*score[0],1.2*score[1],0.6*score[2]] # Score Function
+                cost = [0.15*score[0],2.0*score[1],0.1*score[2]] # Score Function
                 if sum(cost) > best_cost: # Save best configuration
                     best_score = cost
                     best_cost = sum(cost)
@@ -226,12 +226,12 @@ class DWANode(Node):
                 y = pose[1]
                 d = (x - ox)**2 + (y - oy)**2
                 # self.get_logger().info(f'{d}')
-                if d**0.5 <= 0.3:
+                if d <= 0.04:
                     return [-float('inf')]*3 # If collision, return worst score
                 min_dist = min(min_dist,d)
 
         velocity_score = traj[-1][3] 
-        return [heading_score, velocity_score, np.sqrt(min_dist)]
+        return [heading_score, velocity_score, min_dist]
 
 def main(args=None):
     rclpy.init(args=args)

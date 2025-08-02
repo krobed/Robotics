@@ -1,7 +1,8 @@
 /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/launch/amcl.launch.py
 /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/launch/teleop.launch.py
 /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/launch/teleop_keyboard.launch.py
-/home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/map/inlation.py
+/home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/map/inflation.py
+/home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/map/localization_map.yaml
 /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/map/map_ekf.txt
 /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/map/mapa.pgm
 /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/map/mapa.yaml

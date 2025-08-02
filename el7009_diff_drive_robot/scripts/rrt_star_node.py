@@ -34,8 +34,7 @@ class RRTNode(Node):
         w = msg.info.width
         h = msg.info.height
         data = np.array(msg.data).reshape((h, w)) 
-        binary_map = np.where(data > 50, 1, 0)
-        self.map_data = binary_map
+        self.map_data = data
         
         self.map_info = msg.info
         self.map_received = True

@@ -5,7 +5,7 @@ ros2 topic pub /goal_pose geometry_msgs/PoseStamped "header:
    nanosec: 0
 pose:
   position:
-    x: -1.0
+    x: -3.0
     y: 4.0
 "
 

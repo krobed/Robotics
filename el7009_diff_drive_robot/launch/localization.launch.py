@@ -7,8 +7,8 @@ from ament_index_python.packages import get_package_share_directory
 import os
 
 def generate_launch_description():
-    params_file = os.path.join(get_package_share_directory('el7009_diff_drive_robot'),'config','localization_params.yaml')
     map_yaml = os.path.join(get_package_share_directory('amcl_launch'),'map','mapa.yaml')
+    local_yaml = os.path.join(get_package_share_directory('amcl_launch'),'map','localization_map.yaml')
     return LaunchDescription([
         Node(
             package='nav2_map_server',
@@ -21,7 +21,6 @@ def generate_launch_description():
                 'always_send_full_map': True
             }]
         ),
-
         Node(
             package='nav2_lifecycle_manager',
             executable='lifecycle_manager',

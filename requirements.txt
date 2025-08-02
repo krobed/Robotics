@@ -4,4 +4,4 @@ ROS2 and Python requirements:
     - apt install ros-jazzy-tf-transformations ros-jazzy-odom-to-tf-ros2
     - apt install ros-jazzy-nav2-amcl ros-jazzy-nav2-rviz-plugins
     - apt install python3-transforms3d
-    
+    - apt install ros-jazzy-nav2-bringup
