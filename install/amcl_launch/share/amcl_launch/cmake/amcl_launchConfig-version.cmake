@@ -1,0 +1,1 @@
+/home/krobed/EL7009/Robotics/build/amcl_launch/ament_cmake_core/amcl_launchConfig-version.cmake

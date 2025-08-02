@@ -1,0 +1,4 @@
+source;share/el7009_diff_drive_robot/local_setup.bash
+source;share/el7009_diff_drive_robot/local_setup.dsv
+source;share/el7009_diff_drive_robot/local_setup.sh
+source;share/el7009_diff_drive_robot/local_setup.zsh

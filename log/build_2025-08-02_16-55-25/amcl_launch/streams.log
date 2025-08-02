@@ -1,0 +1,30 @@
+[0.027s] Invoking command in '/home/krobed/EL7009/Robotics/build/amcl_launch': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/krobed/EL7009/Robotics/build/amcl_launch -- -j4 -l4
+[0.091s] Invoked command in '/home/krobed/EL7009/Robotics/build/amcl_launch' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/krobed/EL7009/Robotics/build/amcl_launch -- -j4 -l4
+[0.107s] Invoking command in '/home/krobed/EL7009/Robotics/build/amcl_launch': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/krobed/EL7009/Robotics/build/amcl_launch
+[0.121s] -- Install configuration: ""
+[0.122s] -- Execute custom install script
+[0.123s] -- Up-to-date symlink: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/launch/amcl.launch.py
+[0.123s] -- Up-to-date symlink: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/launch/teleop.launch.py
+[0.124s] -- Up-to-date symlink: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/launch/teleop_keyboard.launch.py
+[0.124s] -- Up-to-date symlink: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/map/inlation.py
+[0.124s] -- Up-to-date symlink: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/map/map_ekf.txt
+[0.124s] -- Up-to-date symlink: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/map/mapa.pgm
+[0.125s] -- Up-to-date symlink: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/map/mapa.yaml
+[0.125s] -- Up-to-date symlink: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/config/amcl.yaml
+[0.125s] -- Up-to-date symlink: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/config/map_server.yaml
+[0.126s] -- Up-to-date symlink: /home/krobed/EL7009/Robotics/install/amcl_launch/share/ament_index/resource_index/package_run_dependencies/amcl_launch
+[0.126s] -- Up-to-date symlink: /home/krobed/EL7009/Robotics/install/amcl_launch/share/ament_index/resource_index/parent_prefix_path/amcl_launch
+[0.127s] -- Up-to-date symlink: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/environment/ament_prefix_path.sh
+[0.127s] -- Up-to-date symlink: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/environment/ament_prefix_path.dsv
+[0.128s] -- Up-to-date symlink: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/environment/path.sh
+[0.128s] -- Up-to-date symlink: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/environment/path.dsv
+[0.128s] -- Up-to-date symlink: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/local_setup.bash
+[0.129s] -- Up-to-date symlink: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/local_setup.sh
+[0.129s] -- Up-to-date symlink: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/local_setup.zsh
+[0.129s] -- Up-to-date symlink: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/local_setup.dsv
+[0.130s] -- Symlinking: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/package.dsv
+[0.143s] -- Up-to-date symlink: /home/krobed/EL7009/Robotics/install/amcl_launch/share/ament_index/resource_index/packages/amcl_launch
+[0.143s] -- Up-to-date symlink: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/cmake/amcl_launchConfig.cmake
+[0.144s] -- Up-to-date symlink: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/cmake/amcl_launchConfig-version.cmake
+[0.144s] -- Up-to-date symlink: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/package.xml
+[0.148s] Invoked command in '/home/krobed/EL7009/Robotics/build/amcl_launch' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/krobed/EL7009/Robotics/build/amcl_launch

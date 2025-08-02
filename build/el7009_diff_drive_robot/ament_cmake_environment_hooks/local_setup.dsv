@@ -1,0 +1,2 @@
+source;share/el7009_diff_drive_robot/environment/ament_prefix_path.sh
+source;share/el7009_diff_drive_robot/environment/path.sh

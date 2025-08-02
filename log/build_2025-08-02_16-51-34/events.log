@@ -1,0 +1,79 @@
+[0.000000] (-) TimerEvent: {}
+[0.000485] (amcl_launch) JobQueued: {'identifier': 'amcl_launch', 'dependencies': OrderedDict()}
+[0.000553] (el7009_diff_drive_robot) JobQueued: {'identifier': 'el7009_diff_drive_robot', 'dependencies': OrderedDict()}
+[0.001600] (amcl_launch) JobStarted: {'identifier': 'amcl_launch'}
+[0.009452] (el7009_diff_drive_robot) JobStarted: {'identifier': 'el7009_diff_drive_robot'}
+[0.011526] (amcl_launch) JobProgress: {'identifier': 'amcl_launch', 'progress': 'cmake'}
+[0.012393] (amcl_launch) Command: {'cmd': ['/usr/bin/cmake', '/home/krobed/EL7009/Robotics/amcl_launch', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/home/krobed/EL7009/Robotics/install/amcl_launch'], 'cwd': '/home/krobed/EL7009/Robotics/build/amcl_launch', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'krobed', 'XDG_SESSION_TYPE': 'wayland', 'CLUTTER_DISABLE_MIPMAPPED_TEXT': '1', 'SHLVL': '1', 'HOME': '/home/krobed', 'OLDPWD': '/home/krobed/EL7009/tarea_3', 'DESKTOP_SESSION': 'ubuntu', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '2150', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'LOGNAME': 'krobed', '_': '/usr/bin/colcon', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'krobed', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'PATH': '/home/krobed/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/krobed:@/tmp/.ICE-unix/2113,unix/krobed:/tmp/.ICE-unix/2113', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/435b391a_bfae_4165_8c72_0c507ead07ad', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.MR4992', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.111', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/krobed/EL7009/Robotics/build/amcl_launch', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600'}), 'shell': False}
+[0.017923] (el7009_diff_drive_robot) JobProgress: {'identifier': 'el7009_diff_drive_robot', 'progress': 'cmake'}
+[0.019127] (el7009_diff_drive_robot) Command: {'cmd': ['/usr/bin/cmake', '/home/krobed/EL7009/Robotics/el7009_diff_drive_robot', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot'], 'cwd': '/home/krobed/EL7009/Robotics/build/el7009_diff_drive_robot', 'env': OrderedDict({'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'krobed', 'XDG_SESSION_TYPE': 'wayland', 'CLUTTER_DISABLE_MIPMAPPED_TEXT': '1', 'SHLVL': '1', 'HOME': '/home/krobed', 'OLDPWD': '/home/krobed/EL7009/tarea_3', 'DESKTOP_SESSION': 'ubuntu', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '2150', 'GSM_SKIP_SSH_AGENT_WORKAROUND': 'true', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'LOGNAME': 'krobed', '_': '/usr/bin/colcon', 'MEMORY_PRESSURE_WATCH': '/sys/fs/cgroup/user.slice/user-1000.slice/user@1000.service/session.slice/org.gnome.Shell@wayland.service/memory.pressure', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'krobed', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'PATH': '/home/krobed/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/krobed:@/tmp/.ICE-unix/2113,unix/krobed:/tmp/.ICE-unix/2113', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/435b391a_bfae_4165_8c72_0c507ead07ad', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.MR4992', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'GNOME_TERMINAL_SERVICE': ':1.111', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/krobed/EL7009/Robotics/build/el7009_diff_drive_robot', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'COLCON': '1', 'MEMORY_PRESSURE_WRITE': 'c29tZSAyMDAwMDAgMjAwMDAwMAA=', 'VTE_VERSION': '7600'}), 'shell': False}
+[0.099702] (amcl_launch) StdoutLine: {'line': b'-- The C compiler identification is GNU 13.3.0\n'}
+[0.100062] (-) TimerEvent: {}
+[0.102251] (el7009_diff_drive_robot) StdoutLine: {'line': b'-- The C compiler identification is GNU 13.3.0\n'}
+[0.187036] (amcl_launch) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 13.3.0\n'}
+[0.187463] (el7009_diff_drive_robot) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 13.3.0\n'}
+[0.200198] (-) TimerEvent: {}
+[0.211595] (el7009_diff_drive_robot) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.211978] (amcl_launch) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.300297] (-) TimerEvent: {}
+[0.331307] (el7009_diff_drive_robot) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.333536] (amcl_launch) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.346474] (el7009_diff_drive_robot) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.346918] (el7009_diff_drive_robot) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.347624] (el7009_diff_drive_robot) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.348356] (amcl_launch) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.348706] (amcl_launch) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.349265] (amcl_launch) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.359250] (el7009_diff_drive_robot) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.360384] (amcl_launch) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.400414] (-) TimerEvent: {}
+[0.485670] (el7009_diff_drive_robot) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.487359] (amcl_launch) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.499049] (el7009_diff_drive_robot) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.499505] (el7009_diff_drive_robot) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.500157] (el7009_diff_drive_robot) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.500482] (-) TimerEvent: {}
+[0.501471] (amcl_launch) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.502049] (amcl_launch) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.502869] (amcl_launch) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.518031] (el7009_diff_drive_robot) StderrLine: {'line': b'\x1b[31mCMake Error at CMakeLists.txt:9 (find_package):\n'}
+[0.518553] (el7009_diff_drive_robot) StderrLine: {'line': b'  By not providing "Findament_cmake.cmake" in CMAKE_MODULE_PATH this project\n'}
+[0.518793] (el7009_diff_drive_robot) StderrLine: {'line': b'  has asked CMake to find a package configuration file provided by\n'}
+[0.519190] (el7009_diff_drive_robot) StderrLine: {'line': b'  "ament_cmake", but CMake did not find one.\n'}
+[0.519420] (el7009_diff_drive_robot) StderrLine: {'line': b'\n'}
+[0.519652] (el7009_diff_drive_robot) StderrLine: {'line': b'  Could not find a package configuration file provided by "ament_cmake" with\n'}
+[0.519824] (el7009_diff_drive_robot) StderrLine: {'line': b'  any of the following names:\n'}
+[0.520057] (el7009_diff_drive_robot) StderrLine: {'line': b'\n'}
+[0.520204] (el7009_diff_drive_robot) StderrLine: {'line': b'    ament_cmakeConfig.cmake\n'}
+[0.520382] (el7009_diff_drive_robot) StderrLine: {'line': b'    ament_cmake-config.cmake\n'}
+[0.520533] (el7009_diff_drive_robot) StderrLine: {'line': b'\n'}
+[0.520686] (el7009_diff_drive_robot) StderrLine: {'line': b'  Add the installation prefix of "ament_cmake" to CMAKE_PREFIX_PATH or set\n'}
+[0.520818] (el7009_diff_drive_robot) StderrLine: {'line': b'  "ament_cmake_DIR" to a directory containing one of the above files.  If\n'}
+[0.520948] (el7009_diff_drive_robot) StderrLine: {'line': b'  "ament_cmake" provides a separate development package or SDK, be sure it\n'}
+[0.521094] (el7009_diff_drive_robot) StderrLine: {'line': b'  has been installed.\n'}
+[0.521290] (el7009_diff_drive_robot) StderrLine: {'line': b'\n'}
+[0.521455] (el7009_diff_drive_robot) StderrLine: {'line': b'\x1b[0m\n'}
+[0.521607] (el7009_diff_drive_robot) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[0.521782] (amcl_launch) StderrLine: {'line': b'\x1b[31mCMake Error at CMakeLists.txt:9 (find_package):\n'}
+[0.521969] (amcl_launch) StderrLine: {'line': b'  By not providing "Findament_cmake.cmake" in CMAKE_MODULE_PATH this project\n'}
+[0.522127] (amcl_launch) StderrLine: {'line': b'  has asked CMake to find a package configuration file provided by\n'}
+[0.522359] (amcl_launch) StderrLine: {'line': b'  "ament_cmake", but CMake did not find one.\n'}
+[0.522521] (amcl_launch) StderrLine: {'line': b'\n'}
+[0.522704] (amcl_launch) StderrLine: {'line': b'  Could not find a package configuration file provided by "ament_cmake" with\n'}
+[0.522875] (amcl_launch) StderrLine: {'line': b'  any of the following names:\n'}
+[0.523069] (amcl_launch) StderrLine: {'line': b'\n'}
+[0.523279] (amcl_launch) StderrLine: {'line': b'    ament_cmakeConfig.cmake\n'}
+[0.523477] (amcl_launch) StderrLine: {'line': b'    ament_cmake-config.cmake\n'}
+[0.523674] (amcl_launch) StderrLine: {'line': b'\n'}
+[0.523872] (amcl_launch) StderrLine: {'line': b'  Add the installation prefix of "ament_cmake" to CMAKE_PREFIX_PATH or set\n'}
+[0.524072] (amcl_launch) StderrLine: {'line': b'  "ament_cmake_DIR" to a directory containing one of the above files.  If\n'}
+[0.524331] (amcl_launch) StderrLine: {'line': b'  "ament_cmake" provides a separate development package or SDK, be sure it\n'}
+[0.524920] (amcl_launch) StderrLine: {'line': b'  has been installed.\n'}
+[0.525079] (amcl_launch) StderrLine: {'line': b'\n'}
+[0.525242] (amcl_launch) StderrLine: {'line': b'\x1b[0m\n'}
+[0.525512] (amcl_launch) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[0.525956] (el7009_diff_drive_robot) CommandEnded: {'returncode': 1}
+[0.528387] (amcl_launch) CommandEnded: {'returncode': 1}
+[0.551047] (el7009_diff_drive_robot) JobEnded: {'identifier': 'el7009_diff_drive_robot', 'rc': 1}
+[0.551939] (amcl_launch) JobEnded: {'identifier': 'amcl_launch', 'rc': 'SIGINT'}
+[0.562699] (-) EventReactorShutdown: {}

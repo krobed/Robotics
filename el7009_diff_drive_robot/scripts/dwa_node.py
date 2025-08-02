@@ -126,17 +126,18 @@ class DWANode(Node):
     def scan_to_obstacles(self, scan):
         obstacles = []
         for i, r in enumerate(scan):
-            a = self.angle_min + i*self.angle_increment
-            ox = self.state[0] + r * np.cos(self.state[2] + a)
-            oy = self.state[1] + r * np.sin(self.state[2] + a)
-            obstacles.append((round(ox), round(oy)))
-            if r - self.range_min <=  0.001 and :
-                self.get_logger().info(f'Crash at {self.state[:2]}')
-                pose = PoseStamped()
-                pose.header.frame_id = 'map'
-                pose.pose.position.x = self.state[0]
-                pose.pose.position.y = self.state[1]
-                self.crash_pub.publish(pose)
+            if r <= 4:
+                a = self.angle_min + i*self.angle_increment
+                ox = self.state[0] + r * np.cos(self.state[2] + a)
+                oy = self.state[1] + r * np.sin(self.state[2] + a)
+                obstacles.append((round(ox), round(oy)))
+                if r - self.range_min <=  0.001:
+                    self.get_logger().info(f'Crash at {self.state[:2]}')
+                    pose = PoseStamped()
+                    pose.header.frame_id = 'map'
+                    pose.pose.position.x = self.state[0]
+                    pose.pose.position.y = self.state[1]
+                    self.crash_pub.publish(pose)
         return obstacles
 
     def publish_path(self, trajectories):
@@ -225,7 +226,7 @@ class DWANode(Node):
                 y = pose[1]
                 d = (x - ox)**2 + (y - oy)**2
                 # self.get_logger().info(f'{d}')
-                if d**0.5 -  self.range_min<= 0.05:
+                if d**0.5 <= 0.3:
                     return [-float('inf')]*3 # If collision, return worst score
                 min_dist = min(min_dist,d)
 

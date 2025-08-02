@@ -1,0 +1,38 @@
+-- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Found ament_lint_auto: 0.17.2 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+-- Added test 'flake8' to check Python code syntax and style conventions
+-- Configured 'flake8' exclude dirs and/or files: 
+-- Added test 'lint_cmake' to check CMake code style
+-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+-- Added test 'xmllint' to check XML markup files
+-- Configuring done (0.7s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/krobed/EL7009/Robotics/build/amcl_launch
+-- Install configuration: ""
+-- Execute custom install script
+-- Symlinking: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/launch/amcl.launch.py
+-- Symlinking: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/launch/teleop.launch.py
+-- Symlinking: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/launch/teleop_keyboard.launch.py
+-- Symlinking: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/map/inlation.py
+-- Symlinking: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/map/map_ekf.txt
+-- Symlinking: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/map/mapa.pgm
+-- Symlinking: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/map/mapa.yaml
+-- Symlinking: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/config/amcl.yaml
+-- Symlinking: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/config/map_server.yaml
+-- Symlinking: /home/krobed/EL7009/Robotics/install/amcl_launch/share/ament_index/resource_index/package_run_dependencies/amcl_launch
+-- Symlinking: /home/krobed/EL7009/Robotics/install/amcl_launch/share/ament_index/resource_index/parent_prefix_path/amcl_launch
+-- Symlinking: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/environment/ament_prefix_path.sh
+-- Symlinking: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/environment/ament_prefix_path.dsv
+-- Symlinking: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/environment/path.sh
+-- Symlinking: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/environment/path.dsv
+-- Symlinking: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/local_setup.bash
+-- Symlinking: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/local_setup.sh
+-- Symlinking: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/local_setup.zsh
+-- Symlinking: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/local_setup.dsv
+-- Symlinking: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/package.dsv
+-- Symlinking: /home/krobed/EL7009/Robotics/install/amcl_launch/share/ament_index/resource_index/packages/amcl_launch
+-- Symlinking: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/cmake/amcl_launchConfig.cmake
+-- Symlinking: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/cmake/amcl_launchConfig-version.cmake
+-- Symlinking: /home/krobed/EL7009/Robotics/install/amcl_launch/share/amcl_launch/package.xml

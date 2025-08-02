@@ -1,0 +1,59 @@
+[0.022s] Invoking command in '/home/krobed/EL7009/Robotics/build/el7009_diff_drive_robot': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/krobed/EL7009/Robotics/el7009_diff_drive_robot -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot
+[0.056s] -- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[0.296s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[0.424s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.517s] -- Found ament_lint_auto: 0.17.2 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+[0.709s] -- Added test 'flake8' to check Python code syntax and style conventions
+[0.710s] -- Configured 'flake8' exclude dirs and/or files: 
+[0.712s] -- Added test 'lint_cmake' to check CMake code style
+[0.714s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[0.720s] -- Added test 'xmllint' to check XML markup files
+[0.724s] -- Configuring done (0.7s)
+[0.729s] -- Generating done (0.0s)
+[0.732s] -- Build files have been written to: /home/krobed/EL7009/Robotics/build/el7009_diff_drive_robot
+[0.736s] Invoked command in '/home/krobed/EL7009/Robotics/build/el7009_diff_drive_robot' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/krobed/EL7009/Robotics/el7009_diff_drive_robot -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot
+[0.738s] Invoking command in '/home/krobed/EL7009/Robotics/build/el7009_diff_drive_robot': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/krobed/EL7009/Robotics/build/el7009_diff_drive_robot -- -j4 -l4
+[0.807s] Invoked command in '/home/krobed/EL7009/Robotics/build/el7009_diff_drive_robot' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/krobed/EL7009/Robotics/build/el7009_diff_drive_robot -- -j4 -l4
+[0.809s] Invoking command in '/home/krobed/EL7009/Robotics/build/el7009_diff_drive_robot': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/krobed/EL7009/Robotics/build/el7009_diff_drive_robot
+[0.821s] -- Install configuration: ""
+[0.821s] -- Execute custom install script
+[0.822s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/share/el7009_diff_drive_robot/launch/__pycache__/robot.launch.cpython-312.pyc
+[0.835s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/share/el7009_diff_drive_robot/launch/dwa.launch.py
+[0.849s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/share/el7009_diff_drive_robot/launch/localization.launch.py
+[0.862s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/share/el7009_diff_drive_robot/launch/robot.launch.py
+[0.875s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/share/el7009_diff_drive_robot/launch/rrt.launch.py
+[0.888s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/share/el7009_diff_drive_robot/launch/rsp.launch.py
+[0.910s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/share/el7009_diff_drive_robot/urdf/gazebo_control.xacro
+[0.923s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/share/el7009_diff_drive_robot/urdf/inertial_macros.xacro
+[0.936s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/share/el7009_diff_drive_robot/urdf/lidar.xacro
+[0.949s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/share/el7009_diff_drive_robot/urdf/robot.urdf.xacro
+[0.963s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/share/el7009_diff_drive_robot/urdf/robot_core.xacro
+[0.976s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/share/el7009_diff_drive_robot/config/gz_bridge.yaml
+[0.992s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/share/el7009_diff_drive_robot/config/localization_params.yaml
+[1.010s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/share/el7009_diff_drive_robot/worlds/box_obstacle.sdf
+[1.023s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/share/el7009_diff_drive_robot/worlds/empty.world
+[1.038s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/share/el7009_diff_drive_robot/worlds/industrial-warehouse.sdf
+[1.051s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/share/el7009_diff_drive_robot/worlds/obstacles.world
+[1.065s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/share/el7009_diff_drive_robot/rviz/bot.rviz
+[1.077s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/lib/el7009_diff_drive_robot/dwa_node.py
+[1.091s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/lib/el7009_diff_drive_robot/rrt_star_node.py
+[1.111s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/lib/el7009_diff_drive_robot/plotpose.py
+[1.124s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/lib/el7009_diff_drive_robot/gttf.py
+[1.137s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/lib/el7009_diff_drive_robot/obstacle.py
+[1.150s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/lib/el7009_diff_drive_robot/send_goal.py
+[1.164s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/share/ament_index/resource_index/package_run_dependencies/el7009_diff_drive_robot
+[1.177s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/share/ament_index/resource_index/parent_prefix_path/el7009_diff_drive_robot
+[1.192s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/share/el7009_diff_drive_robot/environment/ament_prefix_path.sh
+[1.211s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/share/el7009_diff_drive_robot/environment/ament_prefix_path.dsv
+[1.227s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/share/el7009_diff_drive_robot/environment/path.sh
+[1.241s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/share/el7009_diff_drive_robot/environment/path.dsv
+[1.254s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/share/el7009_diff_drive_robot/local_setup.bash
+[1.267s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/share/el7009_diff_drive_robot/local_setup.sh
+[1.280s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/share/el7009_diff_drive_robot/local_setup.zsh
+[1.297s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/share/el7009_diff_drive_robot/local_setup.dsv
+[1.319s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/share/el7009_diff_drive_robot/package.dsv
+[1.360s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/share/ament_index/resource_index/packages/el7009_diff_drive_robot
+[1.420s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/share/el7009_diff_drive_robot/cmake/el7009_diff_drive_robotConfig.cmake
+[1.480s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/share/el7009_diff_drive_robot/cmake/el7009_diff_drive_robotConfig-version.cmake
+[1.549s] -- Symlinking: /home/krobed/EL7009/Robotics/install/el7009_diff_drive_robot/share/el7009_diff_drive_robot/package.xml
+[1.610s] Invoked command in '/home/krobed/EL7009/Robotics/build/el7009_diff_drive_robot' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/krobed/EL7009/Robotics/build/el7009_diff_drive_robot
