@@ -66,7 +66,7 @@ class RRTNode(Node):
             self.get_logger().info('Esperando odometría para obtener posición inicial...')
             return
         if self.goal_position is None:
-            self.get_logger().info('Esperando posicion objetivo...')
+            # self.get_logger().info('Esperando posicion objetivo...')
             return
         if self.goal_position != self.prev_goal:
             self.pub_init_position(self.start_position)

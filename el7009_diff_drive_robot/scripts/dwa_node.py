@@ -126,18 +126,17 @@ class DWANode(Node):
     def scan_to_obstacles(self, scan):
         obstacles = []
         for i, r in enumerate(scan):
-            if not np.isinf(r):
-                a = self.angle_min + i*self.angle_increment
-                ox = self.state[0] + r * np.cos(self.state[2] + a)
-                oy = self.state[1] + r * np.sin(self.state[2] + a)
-                obstacles.append((round(ox), round(oy)))
-                if r - self.range_min <=  0.001:
-                    self.get_logger().info(f'Crash at {self.state[:2]}')
-                    pose = PoseStamped()
-                    pose.header.frame_id = 'map'
-                    pose.pose.position.x = self.state[0]
-                    pose.pose.position.y = self.state[1]
-                    self.crash_pub.publish(pose)
+            a = self.angle_min + i*self.angle_increment
+            ox = self.state[0] + r * np.cos(self.state[2] + a)
+            oy = self.state[1] + r * np.sin(self.state[2] + a)
+            obstacles.append((ox, oy))
+            if r - self.range_min <=  0.001:
+                # self.get_logger().info(f'Crash at {self.state[:2]}')
+                pose = PoseStamped()
+                pose.header.frame_id = 'map'
+                pose.pose.position.x = self.state[0]
+                pose.pose.position.y = self.state[1]
+                self.crash_pub.publish(pose)
         return obstacles
 
     def publish_path(self, trajectories):
@@ -171,14 +170,14 @@ class DWANode(Node):
     def dwa_control(self, state, goal, obstacles):
         dw = self.calc_dynamic_window(state)
         best_score = []
-        best_cost= -float('inf')
+        best_cost= -1
         best_u = [0.0, 0.0]
         best_traj = []
         for v in np.linspace(dw[0], dw[1], 5): # Linear velocity
             for w in np.linspace(dw[2], dw[3], 5): # Angular velocity 
                 traj = self.predict_trajectory(state,goal, v, w) # Predictions
                 score = self.evaluate_trajectory(traj, goal, obstacles) # Calculate score
-                cost = [0.15*score[0],2.0*score[1],0.1*score[2]] # Score Function
+                cost = [0.15*score[0],1.0*score[1],0.2*score[2]] # Score Function
                 if sum(cost) > best_cost: # Save best configuration
                     best_score = cost
                     best_cost = sum(cost)
@@ -226,7 +225,7 @@ class DWANode(Node):
                 y = pose[1]
                 d = (x - ox)**2 + (y - oy)**2
                 # self.get_logger().info(f'{d}')
-                if d <= 0.04:
+                if np.sqrt(d) <= self.range_min+0.4:
                     return [-float('inf')]*3 # If collision, return worst score
                 min_dist = min(min_dist,d)
 
