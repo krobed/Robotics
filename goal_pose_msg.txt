@@ -1,0 +1,12 @@
+ros2 topic pub /goal_pose geometry_msgs/PoseStamped "header:
+ frame_id: 'map'
+ stamp:
+   sec: 0
+   nanosec: 0
+pose:
+  position:
+    x: -1.5
+    y: 4.0
+"
+
+
