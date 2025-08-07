@@ -10,7 +10,7 @@ Panels:
         - /Map1/Topic1
         - /Pose3
       Splitter Ratio: 0.5
-    Tree Height: 722
+    Tree Height: 303
   - Class: rviz_common/Selection
     Name: Selection
   - Class: rviz_common/Tool Properties
@@ -264,7 +264,7 @@ Visualization Manager:
       Enabled: true
       Name: MarkerArray
       Namespaces:
-        dwa_predictions: true
+        {}
       Topic:
         Depth: 5
         Durability Policy: Volatile
@@ -344,7 +344,7 @@ Visualization Manager:
       Pitch: 1.5697963237762451
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz_default_plugins)
-      Yaw: 4.660399913787842
+      Yaw: 4.7154011726379395
     Saved:
       - Class: rviz_default_plugins/Orbit
         Distance: 5

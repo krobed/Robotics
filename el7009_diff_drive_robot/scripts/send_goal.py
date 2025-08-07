@@ -60,21 +60,21 @@ class GoalPublisher(Node):
 
 def main(args=None):
     goal_poses = [
-        [2,9.5],
         [-3,4],
         [4,2],
         [-3,-8],
         [2,-9],
-        [-4,10],
+        [-4,9],
+        [1.8,9],
         [4,-7],
+        [0,0],
         [-3,7],
         [1,4],
         [-2,-9],
         [0,0],
+        [4,-7],
         [-3,7],
         [4,2],
-        [0,0],
-        [4,-7],
     ]
     rclpy.init(args=args)
     node = GoalPublisher(goal_poses)

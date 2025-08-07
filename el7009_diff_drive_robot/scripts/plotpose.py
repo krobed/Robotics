@@ -96,10 +96,10 @@ class PosePlotter(Node):
         fig, ax = plt.subplots(figsize=(8,10))
         while rclpy.ok():
             ax.clear()
-            ax.set_title(f"Distance to Objective")
+            ax.set_title(f"")
             if len(self.global_path_x)!=0:
-                ax.plot(self.global_path_x,self.global_path_y, 'b--', label='RRT* Path')
-                ax.scatter(self.global_path_x[1:],self.global_path_y[1:], c='b')
+                # ax.plot(self.global_path_x,self.global_path_y, 'b--', label='RRT* Path')
+                # ax.scatter(self.global_path_x[1:],self.global_path_y[1:], c='b')
                 ax.scatter(self.global_path_x[0],self.global_path_y[0], c='black', label='Init Position')
             if len(self.crashes) != 0:
                 ax.scatter(self.crashes[0][0],self.crashes[0][1], c='r', label='Crashes')
@@ -128,8 +128,8 @@ class PosePlotter(Node):
                 ]
                 ax.imshow(np.flipud(self._map), cmap='gray', extent=extent, origin='upper', vmin=0, vmax=100)
             ax.grid()
-            ax.legend(bbox_to_anchor=(1.1,1.15))
-            if self.goal_position is not None and len(self.global_path_x)>0 :
+            ax.legend(mode='expand', loc='upper center', ncol=5)
+            if self.goal_position is not None and len(self.global_path_x)>0:
                 a = len('install/el7009_diff_drive_robot/')
                 d = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
                 plt.savefig(f'{os.path.dirname(d)[:-a]}/el7009_diff_drive_robot/trajectory/({round(self.global_path_x[0])},{round(self.global_path_y[0])}){self.goal_position}.png')

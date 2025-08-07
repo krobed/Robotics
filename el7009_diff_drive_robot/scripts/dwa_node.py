@@ -29,26 +29,34 @@ class DWANode(Node):
         self.plan_sub = self.create_subscription(Path, '/global_plan', self.plan_callback, 10)
 
         # Timer para ejecutar el planner a intervalos regulares
+
         self.timer = self.create_timer(0.1, self.timer_callback)
+        self.sign =-1
+        self.time = 6
 
         # Estado del robot: x, y, theta, v, w
         self.state = np.zeros(5)
         self.scan = None
+        self.hc=1.0
+        self.vc=0.5
+        self.ac=1.25
 
         # Parámetros del robot (Differential robot)
         self.min_speed= 0.0
         self.max_speed = 0.3
-        self.max_yawrate = np.radians(40.0)
-        self.max_accel = 1.0
-        self.max_dyawrate = np.radians(150.0)
+        self.max_yawrate = 1.0
+        self.max_accel = 1.5
+        self.max_dyawrate = 2.0
         self.last_odom_time = None
-        self.predict_time = 2.0
+        self.predict_time = 3.0
         self.dt = 0.1
         self.last_state_time = 0
-        self.min_goal_distance = 0.2
+        self.min_goal_distance = 0.5
+        self.recalculating = False
         # Plan global
         self.global_path = []
         self.goal_index = 0
+
 
     def odom_callback(self, msg): #Odom para velocidades
         pos = msg.pose.pose.position
@@ -72,7 +80,7 @@ class DWANode(Node):
 
     def scan_callback(self, msg):
         self.scan = np.array(msg.ranges)
-        # self.get_logger().info(f'Sensors: {self.scan}')
+        # self.get_logger().info(f'N Sensors: {len(self.scan)}')
         self.angle_min = msg.angle_min
         self.angle_increment = msg.angle_increment
         self.range_min = msg.range_min
@@ -95,19 +103,44 @@ class DWANode(Node):
         if len(self.global_path)==0:
             self.get_logger().info('Esperando un plan')
             return 
-        
         obstacles = self.scan_to_obstacles(self.scan)
-        if self.global_path:
+        if self.global_path and not np.hypot(self.global_path[-1][0] - self.state[0], self.global_path[-1][1] - self.state[1]) < 0.2:
             while (self.goal_index < len(self.global_path) - 1 and
                    np.hypot(self.global_path[self.goal_index][0] - self.state[0],
                             self.global_path[self.goal_index][1] - self.state[1]) < self.min_goal_distance):
                 self.goal_index += 1
             goal = self.global_path[self.goal_index]
             # self.get_logger().info(f'Goal {self.goal_index+1} of {len(self.global_path)}')
-            control= self.dwa_control(self.state, goal, obstacles)
+            control, score= self.dwa_control(self.state, goal, obstacles)
+            if control[0] < 0.01 and control[1]<0.1:
+                if self.last_state_time is None:
+                    self.last_state_time=self.last_odom_time
+                elif self.last_odom_time-self.last_state_time > 5:
+                    if self.last_odom_time - self.last_state_time<7:
+                        r_state=self.state-[0.0,0.0,np.pi/2,0,0]
+                        l_state=self.state+[0.0,0.0,np.pi/2,0,0]
+                        r_control,r_score=self.dwa_control(r_state, goal, obstacles)
+                        l_control,l_score=self.dwa_control(l_state, goal, obstacles)
+                        if r_score>l_score:
+                            control[1]=np.pi/6
+                        else:
+                            control[1]=-np.pi/6
+                    else:
+                        self.last_state_time=self.last_odom_time
+                self.get_logger().info(f'Robot has been still for {self.last_odom_time-self.last_state_time}s')
+            else:
+                self.last_state_time = None
+            
+            if self.goal_index<=1 and len(self.global_path)>1:
+                dx = goal[0] - self.state[0]
+                dy = goal[1] - self.state[1]
+                angle_to_goal = np.arctan2(dy, dx)
+                if abs(normalize_angle(angle_to_goal -  self.state[2]))/np.pi>0.5:
+                    control[0]=0.0
         else:
             control = [0.0, 0.0]
             self.get_logger().info(f'Goal Reached: {self.global_path[-1]}')
+            self.last_state_time = None
 
         msg = Twist()
         msg.linear.x = control[0]
@@ -122,7 +155,7 @@ class DWANode(Node):
             ox = self.state[0] + r * np.cos(self.state[2] + a)
             oy = self.state[1] + r * np.sin(self.state[2] + a)
             obstacles.append((ox, oy))
-            if r - self.range_min <=  0.001:
+            if r <= self.range_min :
                 # self.get_logger().info(f'Crash at {self.state[:2]}')
                 pose = PoseStamped()
                 pose.header.frame_id = 'map'
@@ -162,22 +195,23 @@ class DWANode(Node):
     def dwa_control(self, state, goal, obstacles):
         dw = self.calc_dynamic_window(state)
         best_score = []
-        best_cost= -float('inf')
+        best_cost= float('inf')
         best_u = [0.0, 0.0]
         best_traj = []
         for v in np.linspace(dw[0], dw[1], 5): # Linear velocity
             for w in np.linspace(dw[2], dw[3], 5): # Angular velocity 
                 traj = self.predict_trajectory(state,goal, v, w) # Predictions
                 score = self.evaluate_trajectory(traj, goal, obstacles) # Calculate score
-                cost = [1.0*score[0],0.5*score[1],2.0*score[2]] # Score Function
-                if sum(cost) > best_cost: # Save best configuration
+                cost = [self.hc*score[0],self.vc*score[1],self.ac*score[2]] # Score Function
+                if sum(cost) < best_cost: # Save best configuration
                     best_score = cost
                     best_cost = sum(cost)
                     best_u = [v, w]
                 best_traj.append(traj)
+           
         self.publish_path(best_traj)
-        self.get_logger().info(f'{best_score}')
-        return best_u
+        # self.get_logger().info(f'{best_score}')
+        return best_u, best_cost
 
     def calc_dynamic_window(self, state):
         
@@ -209,20 +243,20 @@ class DWANode(Node):
         dx = goal[0] - traj[-1][0]
         dy = goal[1] - traj[-1][1]
         angle_to_goal = np.arctan2(dy, dx)
-        heading_score = 1 - abs(normalize_angle(angle_to_goal -  traj[-1][2]))/np.pi
+        heading_score = abs(normalize_angle(angle_to_goal -  traj[-1][2]))/np.pi
         min_dist = self.range_max
         for ox, oy in obstacles:
-            for pose in traj:
+            for pose in traj[2:]:
                 x = pose[0]
                 y = pose[1]
                 d = np.sqrt((x - ox)**2 + (y - oy)**2)
                 # self.get_logger().info(f'{d}')
-                if d <= self.range_min+0.1:
-                    return [-float('inf')]*3 # If collision, return worst score
+                if d <= self.range_min+0.05:
+                    return [float('inf')]*3 # If collision, return worst score
                 min_dist = min(min_dist,d)
 
-        velocity_score = traj[-1][3]/self.max_speed
-        return [heading_score, velocity_score, min_dist/self.range_max]
+        velocity_score = 1-traj[-1][3]/self.max_speed
+        return [heading_score, velocity_score, self.range_min/min_dist]
 
 def main(args=None):
     rclpy.init(args=args)
