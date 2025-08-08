@@ -130,7 +130,7 @@ def generate_launch_description():
         declare_world,
 
         # Launch the nodes
-        # rrt_star,
+        rrt_star,
         rviz2,
         rsp,
         gazebo_server,
